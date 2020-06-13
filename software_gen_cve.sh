@@ -10,8 +10,8 @@
 home=$(dirname $(readlink -f "$0"))
 
 # Input file
-filename=$home/SoftwareList.csv
-
+#filename=$home/SoftwareList-1.csv
+filename=$1
 
 TmpDir=$home/software-Tmpoutput
 
