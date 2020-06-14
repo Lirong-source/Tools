@@ -198,7 +198,7 @@ with open(foutput, 'w') as csvOutputFile:
     for year in range(2013, 2020):
         print("scanning year "+str(year))
         # Open the json file that stores the CVE information
-        with open('./nvdcve-json/nvdcve-1.0-'+str(year)+'.json', encoding = "utf-8") as f:
+        with open('./nvdcve-json/nvdcve-1.1-'+str(year)+'.json', encoding = "utf-8") as f:
             data = json.load(f)
             # Obtain CVE Items which contains information of many CVE ID 
             for cve in data["CVE_Items"]:
