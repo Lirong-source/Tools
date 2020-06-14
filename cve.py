@@ -194,17 +194,20 @@ print("scanning for " + str(sys.argv[1]) + "-" + str(sys.argv[2]))
 #with open("./output.csv", 'w') as csvOutputFile:
 with open(foutput, 'w') as csvOutputFile:
     writer = csv.writer(csvOutputFile)
-    # We check the nvdcve information from 2013 to 2020
-    for year in range(2013, 2020):
+    # We check the nvdcve information from 2002 to 2020
+    for year in range(2002, 2021):
         print("scanning year "+str(year))
         # Open the json file that stores the CVE information
-        with open('./nvdcve-json/nvdcve-1.1-'+str(year)+'.json', encoding = "utf-8") as f:
+        with open('./nvdcve-json/nvdcve-1.0-'+str(year)+'.json', encoding = "utf-8") as f:
             data = json.load(f)
             # Obtain CVE Items which contains information of many CVE ID 
             for cve in data["CVE_Items"]:
                 # Obtain the CVE ID
                 id = cve["cve"]["CVE_data_meta"]["ID"]
+                print(id)
                 # Obtain the vendors that the CVE influences
+                if("affects" not in cve["cve"]):
+                    continue
                 vendorDatas = cve["cve"]["affects"]["vendor"]["vendor_data"]
                 for vdd in vendorDatas:
                     for product in vdd["product"]["product_data"]:               
